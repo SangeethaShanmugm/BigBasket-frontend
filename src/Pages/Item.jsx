@@ -1,14 +1,16 @@
 import React from 'react'
 import { Card, Button } from "antd"
 import { useDispatch } from 'react-redux'
+import { addToCart } from '../redux/ItemSlice'
 const { Meta } = Card
 function Item({ item }) {
     const dispatch = useDispatch()
 
-    const addToCart = () => {
+    const handleAddCart = (item) => {
         console.log("Add To cart")
-        const payload = dispatch({ type: "addToCart", payload: { ...item, quantity: 1 } })
-        console.log(payload)
+        dispatch(addToCart(item))
+        // const payload = dispatch({ type: "addToCart", payload: { ...item, quantity: 1 } })
+        // console.log(payload)
     }
 
     return (
@@ -21,7 +23,7 @@ function Item({ item }) {
                 src={item.image} alt={item.name} />}>
                 <Meta title={item.name} />
                 <h4>Price: Rs. {item.price}</h4>
-                <Button type="primary" onClick={() => addToCart()}>Add to Cart</Button>
+                <Button type="primary" onClick={() => handleAddCart(item)}>Add to Cart</Button>
             </Card>
         </div>
     )

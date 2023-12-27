@@ -10,7 +10,7 @@ function Home() {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const cartItems = useSelector((state) => state.itemShop.item)
+    const cartItems = useSelector((state) => state.itemShop.cartItems)
 
     console.log(cartItems)
 
@@ -44,7 +44,7 @@ function Home() {
 
 
             <div> <button type="button" className='btn btn-primary position-relative' onClick={() => navigate("/cart")}>Cart
-                <span className='position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger'></span></button></div>
+                <span className='position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger'>{cartItems.length}</span></button></div>
 
 
             {
